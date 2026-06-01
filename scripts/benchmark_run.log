@@ -1,0 +1,1965 @@
+2026-05-14 02:51:52,703 INFO Loaded 100 scenarios
+2026-05-14 02:51:52,748 INFO [  1/100] lexical_001                    lexical
+2026-05-14 02:51:52,817 INFO   naive=1.00  final=1.00
+2026-05-14 02:51:52,817 INFO [  2/100] lexical_002                    lexical
+2026-05-14 02:51:53,612 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:51:53,900 INFO embedding via primary model
+2026-05-14 02:51:53,916 INFO   naive=1.00  final=1.00
+2026-05-14 02:51:53,916 INFO [  3/100] lexical_003                    lexical
+2026-05-14 02:51:53,977 INFO   naive=1.00  final=1.00
+2026-05-14 02:51:53,977 INFO [  4/100] lexical_004                    lexical
+2026-05-14 02:51:54,043 INFO   naive=1.00  final=1.00
+2026-05-14 02:51:54,043 INFO [  5/100] lexical_005                    lexical
+2026-05-14 02:51:54,131 INFO   naive=1.00  final=1.00
+2026-05-14 02:51:54,131 INFO [  6/100] lexical_006                    lexical
+2026-05-14 02:51:54,229 INFO   naive=1.00  final=1.00
+2026-05-14 02:51:54,229 INFO [  7/100] lexical_007                    lexical
+2026-05-14 02:51:54,290 INFO   naive=1.00  final=1.00
+2026-05-14 02:51:54,290 INFO [  8/100] lexical_008                    lexical
+2026-05-14 02:51:54,335 INFO   naive=1.00  final=1.00
+2026-05-14 02:51:54,335 INFO [  9/100] lexical_009                    lexical
+2026-05-14 02:51:54,402 INFO   naive=1.00  final=1.00
+2026-05-14 02:51:54,402 INFO [ 10/100] lexical_010                    lexical
+2026-05-14 02:51:55,974 ERROR   ERROR in lexical_010: 
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 178, in main
+    r = await _run_scenario(scenario, conn=conn, rd=rd)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 108, in _run_scenario
+    id_map = await _seed_facts(facts_list, pid, conn=conn, rd=rd)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 48, in _seed_facts
+    vec = await embed(fact["content"], rd)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 92, in embed
+    vec = _truncate_normalize(await _call_api(text, model))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 50, in _call_api
+    r = await client.post(
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+2026-05-14 02:51:55,979 INFO [ 11/100] lexical_011                    lexical
+2026-05-14 02:51:56,114 INFO   naive=1.00  final=1.00
+2026-05-14 02:51:56,114 INFO [ 12/100] lexical_012                    lexical
+2026-05-14 02:51:56,168 INFO   naive=1.00  final=1.00
+2026-05-14 02:51:56,168 INFO [ 13/100] lexical_013                    lexical
+2026-05-14 02:51:56,958 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:51:58,321 INFO embedding via primary model
+2026-05-14 02:51:58,330 INFO   naive=1.00  final=1.00
+2026-05-14 02:51:58,330 INFO [ 14/100] lexical_014                    lexical
+2026-05-14 02:51:58,940 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:51:59,051 INFO embedding via primary model
+2026-05-14 02:51:59,694 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:51:59,815 INFO embedding via primary model
+2026-05-14 02:52:00,785 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:04,341 INFO embedding via primary model
+2026-05-14 02:52:04,984 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:05,099 INFO embedding via primary model
+2026-05-14 02:52:05,108 INFO   naive=1.00  final=1.00
+2026-05-14 02:52:05,108 INFO [ 15/100] lexical_015                    lexical
+2026-05-14 02:52:05,826 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:07,896 INFO embedding via primary model
+2026-05-14 02:52:08,505 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:08,723 INFO embedding via primary model
+2026-05-14 02:52:09,471 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:10,181 INFO embedding via primary model
+2026-05-14 02:52:10,794 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:10,944 INFO embedding via primary model
+2026-05-14 02:52:10,953 INFO   naive=1.00  final=1.00
+2026-05-14 02:52:10,953 INFO [ 16/100] lexical_016                    lexical
+2026-05-14 02:52:11,583 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:11,701 INFO embedding via primary model
+2026-05-14 02:52:13,343 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:13,533 INFO embedding via primary model
+2026-05-14 02:52:14,142 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:14,571 INFO embedding via primary model
+2026-05-14 02:52:15,188 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:15,310 INFO embedding via primary model
+2026-05-14 02:52:16,240 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:16,982 INFO embedding via primary model
+2026-05-14 02:52:16,991 INFO   naive=1.00  final=1.00
+2026-05-14 02:52:16,991 INFO [ 17/100] lexical_017                    lexical
+2026-05-14 02:52:17,594 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:17,755 INFO embedding via primary model
+2026-05-14 02:52:18,722 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:18,843 INFO embedding via primary model
+2026-05-14 02:52:19,532 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:19,926 INFO embedding via primary model
+2026-05-14 02:52:21,118 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:24,159 INFO embedding via primary model
+2026-05-14 02:52:24,874 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:25,093 INFO embedding via primary model
+2026-05-14 02:52:25,747 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:25,858 INFO embedding via primary model
+2026-05-14 02:52:25,866 INFO   naive=1.00  final=1.00
+2026-05-14 02:52:25,866 INFO [ 18/100] lexical_018                    lexical
+2026-05-14 02:52:26,501 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:26,672 INFO embedding via primary model
+2026-05-14 02:52:27,251 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:28,818 INFO embedding via primary model
+2026-05-14 02:52:29,502 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:29,696 INFO embedding via primary model
+2026-05-14 02:52:29,707 INFO   naive=1.00  final=1.00
+2026-05-14 02:52:29,707 INFO [ 19/100] lexical_019                    lexical
+2026-05-14 02:52:30,353 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:30,477 INFO embedding via primary model
+2026-05-14 02:52:31,124 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:32,871 INFO embedding via primary model
+2026-05-14 02:52:33,621 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:34,082 INFO embedding via primary model
+2026-05-14 02:52:34,717 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:34,855 INFO embedding via primary model
+2026-05-14 02:52:35,586 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:36,665 INFO embedding via primary model
+2026-05-14 02:52:37,259 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:38,210 INFO embedding via primary model
+2026-05-14 02:52:38,217 INFO   naive=1.00  final=1.00
+2026-05-14 02:52:38,218 INFO [ 20/100] lexical_020                    lexical
+2026-05-14 02:52:38,829 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:41,649 INFO embedding via primary model
+2026-05-14 02:52:42,289 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:42,415 INFO embedding via primary model
+2026-05-14 02:52:43,103 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:43,229 INFO embedding via primary model
+2026-05-14 02:52:43,890 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:44,017 INFO embedding via primary model
+2026-05-14 02:52:44,643 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:45,618 INFO embedding via primary model
+2026-05-14 02:52:46,298 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:46,897 INFO embedding via primary model
+2026-05-14 02:52:46,905 INFO   naive=1.00  final=1.00
+2026-05-14 02:52:46,906 INFO [ 21/100] lexical_021                    lexical
+2026-05-14 02:52:52,284 WARNING embedding primary failed: 
+2026-05-14 02:52:53,203 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 404 Not Found"
+2026-05-14 02:52:53,205 WARNING embedding fallback failed: Client error '404 Not Found' for url 'https://openrouter.ai/api/v1/embeddings'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2026-05-14 02:52:53,212 ERROR   ERROR in lexical_021: Both embedding models are unavailable
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 92, in embed
+    vec = _truncate_normalize(await _call_api(text, model))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 64, in _call_api
+    r.raise_for_status()
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '404 Not Found' for url 'https://openrouter.ai/api/v1/embeddings'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 178, in main
+    r = await _run_scenario(scenario, conn=conn, rd=rd)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 108, in _run_scenario
+    id_map = await _seed_facts(facts_list, pid, conn=conn, rd=rd)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 48, in _seed_facts
+    vec = await embed(fact["content"], rd)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 100, in embed
+    raise RuntimeError("Both embedding models are unavailable") from last_exc
+RuntimeError: Both embedding models are unavailable
+2026-05-14 02:52:53,213 INFO [ 22/100] lexical_022                    lexical
+2026-05-14 02:52:53,822 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:55,561 INFO embedding via primary model
+2026-05-14 02:52:56,332 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:56,454 INFO embedding via primary model
+2026-05-14 02:52:57,153 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:58,045 INFO embedding via primary model
+2026-05-14 02:52:58,781 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:58,910 INFO embedding via primary model
+2026-05-14 02:52:58,922 INFO   naive=1.00  final=1.00
+2026-05-14 02:52:58,922 INFO [ 23/100] lexical_023                    lexical
+2026-05-14 02:52:59,540 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:52:59,648 INFO embedding via primary model
+2026-05-14 02:53:00,267 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:00,396 INFO embedding via primary model
+2026-05-14 02:53:00,996 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:01,698 INFO embedding via primary model
+2026-05-14 02:53:07,062 WARNING embedding primary failed: 
+2026-05-14 02:53:07,667 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 404 Not Found"
+2026-05-14 02:53:07,673 WARNING embedding fallback failed: Client error '404 Not Found' for url 'https://openrouter.ai/api/v1/embeddings'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2026-05-14 02:53:07,680 ERROR   ERROR in lexical_023: Both embedding models are unavailable
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 92, in embed
+    vec = _truncate_normalize(await _call_api(text, model))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 64, in _call_api
+    r.raise_for_status()
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '404 Not Found' for url 'https://openrouter.ai/api/v1/embeddings'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 178, in main
+    r = await _run_scenario(scenario, conn=conn, rd=rd)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 108, in _run_scenario
+    id_map = await _seed_facts(facts_list, pid, conn=conn, rd=rd)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 48, in _seed_facts
+    vec = await embed(fact["content"], rd)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 100, in embed
+    raise RuntimeError("Both embedding models are unavailable") from last_exc
+RuntimeError: Both embedding models are unavailable
+2026-05-14 02:53:07,681 INFO [ 24/100] lexical_024                    lexical
+2026-05-14 02:53:08,386 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:11,240 INFO embedding via primary model
+2026-05-14 02:53:11,818 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:11,995 INFO embedding via primary model
+2026-05-14 02:53:12,594 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:14,195 INFO embedding via primary model
+2026-05-14 02:53:14,824 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:14,977 INFO embedding via primary model
+2026-05-14 02:53:15,588 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:15,726 INFO embedding via primary model
+2026-05-14 02:53:16,343 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:16,451 INFO embedding via primary model
+2026-05-14 02:53:16,459 INFO   naive=1.00  final=1.00
+2026-05-14 02:53:16,459 INFO [ 25/100] lexical_025                    lexical
+2026-05-14 02:53:17,039 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:18,169 INFO embedding via primary model
+2026-05-14 02:53:18,884 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:18,991 INFO embedding via primary model
+2026-05-14 02:53:19,593 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:21,414 INFO embedding via primary model
+2026-05-14 02:53:22,009 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:22,710 INFO embedding via primary model
+2026-05-14 02:53:23,422 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:23,595 INFO embedding via primary model
+2026-05-14 02:53:24,835 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:24,948 INFO embedding via primary model
+2026-05-14 02:53:24,974 INFO   naive=1.00  final=1.00
+2026-05-14 02:53:24,974 INFO [ 26/100] semantic_drift_001             semantic_drift
+2026-05-14 02:53:25,566 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:25,685 INFO embedding via primary model
+2026-05-14 02:53:26,291 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:26,911 INFO embedding via primary model
+2026-05-14 02:53:27,596 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:27,706 INFO embedding via primary model
+2026-05-14 02:53:28,383 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:28,943 INFO embedding via primary model
+2026-05-14 02:53:29,581 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:30,140 INFO embedding via primary model
+2026-05-14 02:53:30,742 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:31,197 INFO embedding via primary model
+2026-05-14 02:53:31,207 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:53:31,207 INFO [ 27/100] semantic_drift_002             semantic_drift
+2026-05-14 02:53:31,880 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:32,018 INFO embedding via primary model
+2026-05-14 02:53:32,636 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:33,347 INFO embedding via primary model
+2026-05-14 02:53:34,022 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:34,129 INFO embedding via primary model
+2026-05-14 02:53:35,344 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:36,400 INFO embedding via primary model
+2026-05-14 02:53:37,360 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:37,878 INFO embedding via primary model
+2026-05-14 02:53:37,898 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:53:37,898 INFO [ 28/100] semantic_drift_003             semantic_drift
+2026-05-14 02:53:38,536 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:38,683 INFO embedding via primary model
+2026-05-14 02:53:39,281 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:40,132 INFO embedding via primary model
+2026-05-14 02:53:40,882 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:41,155 INFO embedding via primary model
+2026-05-14 02:53:42,045 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:42,459 INFO embedding via primary model
+2026-05-14 02:53:43,042 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:43,441 INFO embedding via primary model
+2026-05-14 02:53:44,039 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:44,171 INFO embedding via primary model
+2026-05-14 02:53:44,179 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:53:44,179 INFO [ 29/100] semantic_drift_004             semantic_drift
+2026-05-14 02:53:45,100 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:47,507 INFO embedding via primary model
+2026-05-14 02:53:48,195 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:48,342 INFO embedding via primary model
+2026-05-14 02:53:49,886 ERROR   ERROR in semantic_drift_004: 
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 178, in main
+    r = await _run_scenario(scenario, conn=conn, rd=rd)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 108, in _run_scenario
+    id_map = await _seed_facts(facts_list, pid, conn=conn, rd=rd)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 48, in _seed_facts
+    vec = await embed(fact["content"], rd)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 92, in embed
+    vec = _truncate_normalize(await _call_api(text, model))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 50, in _call_api
+    r = await client.post(
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+2026-05-14 02:53:49,889 INFO [ 30/100] semantic_drift_005             semantic_drift
+2026-05-14 02:53:50,481 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:51,833 INFO embedding via primary model
+2026-05-14 02:53:52,426 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:53,610 INFO embedding via primary model
+2026-05-14 02:53:54,221 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:54,326 INFO embedding via primary model
+2026-05-14 02:53:55,087 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:56,669 INFO embedding via primary model
+2026-05-14 02:53:57,299 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:53:57,851 INFO embedding via primary model
+2026-05-14 02:53:59,372 ERROR   ERROR in semantic_drift_005: 
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 178, in main
+    r = await _run_scenario(scenario, conn=conn, rd=rd)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 138, in _run_scenario
+    sar_facts = await get_facts(
+                ^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\tools\get_facts.py", line 66, in get_facts
+    vec = await embed(about, redis)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 92, in embed
+    vec = _truncate_normalize(await _call_api(text, model))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 50, in _call_api
+    r = await client.post(
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+2026-05-14 02:53:59,375 INFO [ 31/100] semantic_drift_006             semantic_drift
+2026-05-14 02:54:00,030 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:00,154 INFO embedding via primary model
+2026-05-14 02:54:00,781 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:00,912 INFO embedding via primary model
+2026-05-14 02:54:01,516 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:02,010 INFO embedding via primary model
+2026-05-14 02:54:02,601 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:03,666 INFO embedding via primary model
+2026-05-14 02:54:04,298 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:09,147 INFO embedding via primary model
+2026-05-14 02:54:09,163 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:54:09,163 INFO [ 32/100] semantic_drift_007             semantic_drift
+2026-05-14 02:54:09,777 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:11,168 INFO embedding via primary model
+2026-05-14 02:54:11,773 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:12,149 INFO embedding via primary model
+2026-05-14 02:54:12,749 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:12,860 INFO embedding via primary model
+2026-05-14 02:54:14,378 ERROR   ERROR in semantic_drift_007: 
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 178, in main
+    r = await _run_scenario(scenario, conn=conn, rd=rd)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 119, in _run_scenario
+    naive_facts = await get_facts(
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\tools\get_facts.py", line 66, in get_facts
+    vec = await embed(about, redis)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 92, in embed
+    vec = _truncate_normalize(await _call_api(text, model))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 50, in _call_api
+    r = await client.post(
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+2026-05-14 02:54:14,385 INFO [ 33/100] semantic_drift_008             semantic_drift
+2026-05-14 02:54:14,951 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:15,117 INFO embedding via primary model
+2026-05-14 02:54:15,719 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:19,399 INFO embedding via primary model
+2026-05-14 02:54:20,290 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:22,162 INFO embedding via primary model
+2026-05-14 02:54:22,781 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:25,813 INFO embedding via primary model
+2026-05-14 02:54:26,478 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:27,679 INFO embedding via primary model
+2026-05-14 02:54:28,257 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:31,018 INFO embedding via primary model
+2026-05-14 02:54:31,026 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:54:31,027 INFO [ 34/100] semantic_drift_009             semantic_drift
+2026-05-14 02:54:31,990 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:32,643 INFO embedding via primary model
+2026-05-14 02:54:33,242 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:35,341 INFO embedding via primary model
+2026-05-14 02:54:35,920 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:36,454 INFO embedding via primary model
+2026-05-14 02:54:37,177 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:39,631 INFO embedding via primary model
+2026-05-14 02:54:40,237 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:41,165 INFO embedding via primary model
+2026-05-14 02:54:41,779 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:41,882 INFO embedding via primary model
+2026-05-14 02:54:42,472 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:42,705 INFO embedding via primary model
+2026-05-14 02:54:42,719 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:54:42,719 INFO [ 35/100] semantic_drift_010             semantic_drift
+2026-05-14 02:54:43,441 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:44,856 INFO embedding via primary model
+2026-05-14 02:54:45,464 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:45,620 INFO embedding via primary model
+2026-05-14 02:54:46,241 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:46,363 INFO embedding via primary model
+2026-05-14 02:54:46,962 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:47,099 INFO embedding via primary model
+2026-05-14 02:54:47,751 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:47,862 INFO embedding via primary model
+2026-05-14 02:54:48,777 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:48,910 INFO embedding via primary model
+2026-05-14 02:54:48,919 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:54:48,919 INFO [ 36/100] semantic_drift_011             semantic_drift
+2026-05-14 02:54:49,663 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:50,667 INFO embedding via primary model
+2026-05-14 02:54:51,374 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:51,655 INFO embedding via primary model
+2026-05-14 02:54:52,344 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:52,460 INFO embedding via primary model
+2026-05-14 02:54:53,101 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:53,980 INFO embedding via primary model
+2026-05-14 02:54:54,680 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:55,112 INFO embedding via primary model
+2026-05-14 02:54:55,789 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:56,191 INFO embedding via primary model
+2026-05-14 02:54:56,223 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:54:56,223 INFO [ 37/100] semantic_drift_012             semantic_drift
+2026-05-14 02:54:56,913 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:57,466 INFO embedding via primary model
+2026-05-14 02:54:58,144 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:54:59,198 INFO embedding via primary model
+2026-05-14 02:54:59,862 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:00,027 INFO embedding via primary model
+2026-05-14 02:55:01,009 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:01,197 INFO embedding via primary model
+2026-05-14 02:55:01,863 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:01,986 INFO embedding via primary model
+2026-05-14 02:55:01,993 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:55:01,993 INFO [ 38/100] semantic_drift_013             semantic_drift
+2026-05-14 02:55:03,566 ERROR   ERROR in semantic_drift_013: 
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 178, in main
+    r = await _run_scenario(scenario, conn=conn, rd=rd)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 108, in _run_scenario
+    id_map = await _seed_facts(facts_list, pid, conn=conn, rd=rd)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 48, in _seed_facts
+    vec = await embed(fact["content"], rd)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 92, in embed
+    vec = _truncate_normalize(await _call_api(text, model))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 50, in _call_api
+    r = await client.post(
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+2026-05-14 02:55:03,569 INFO [ 39/100] semantic_drift_014             semantic_drift
+2026-05-14 02:55:04,182 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:05,583 INFO embedding via primary model
+2026-05-14 02:55:06,200 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:06,958 INFO embedding via primary model
+2026-05-14 02:55:07,540 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:08,254 INFO embedding via primary model
+2026-05-14 02:55:08,975 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:09,085 INFO embedding via primary model
+2026-05-14 02:55:09,697 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:10,852 INFO embedding via primary model
+2026-05-14 02:55:11,533 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:12,851 INFO embedding via primary model
+2026-05-14 02:55:13,552 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:13,773 INFO embedding via primary model
+2026-05-14 02:55:13,782 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:55:13,782 INFO [ 40/100] semantic_drift_015             semantic_drift
+2026-05-14 02:55:14,399 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:14,555 INFO embedding via primary model
+2026-05-14 02:55:15,459 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:15,587 INFO embedding via primary model
+2026-05-14 02:55:16,171 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:17,412 INFO embedding via primary model
+2026-05-14 02:55:18,049 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:18,176 INFO embedding via primary model
+2026-05-14 02:55:18,806 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:19,405 INFO embedding via primary model
+2026-05-14 02:55:20,005 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:20,138 INFO embedding via primary model
+2026-05-14 02:55:20,146 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:55:20,146 INFO [ 41/100] semantic_drift_016             semantic_drift
+2026-05-14 02:55:20,728 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:21,730 INFO embedding via primary model
+2026-05-14 02:55:22,346 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:23,844 INFO embedding via primary model
+2026-05-14 02:55:24,476 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:24,600 INFO embedding via primary model
+2026-05-14 02:55:25,315 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:25,830 INFO embedding via primary model
+2026-05-14 02:55:26,487 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:26,596 INFO embedding via primary model
+2026-05-14 02:55:27,209 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:27,351 INFO embedding via primary model
+2026-05-14 02:55:27,359 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:55:27,359 INFO [ 42/100] semantic_drift_017             semantic_drift
+2026-05-14 02:55:27,979 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:28,108 INFO embedding via primary model
+2026-05-14 02:55:28,767 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:28,896 INFO embedding via primary model
+2026-05-14 02:55:29,496 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:29,644 INFO embedding via primary model
+2026-05-14 02:55:30,590 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:31,061 INFO embedding via primary model
+2026-05-14 02:55:31,688 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:31,848 INFO embedding via primary model
+2026-05-14 02:55:32,479 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:33,088 INFO embedding via primary model
+2026-05-14 02:55:33,664 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:33,833 INFO embedding via primary model
+2026-05-14 02:55:33,841 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:55:33,841 INFO [ 43/100] semantic_drift_018             semantic_drift
+2026-05-14 02:55:34,428 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:34,567 INFO embedding via primary model
+2026-05-14 02:55:35,185 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:35,894 INFO embedding via primary model
+2026-05-14 02:55:36,505 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:37,164 INFO embedding via primary model
+2026-05-14 02:55:37,744 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:39,863 INFO embedding via primary model
+2026-05-14 02:55:40,524 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:40,932 INFO embedding via primary model
+2026-05-14 02:55:41,535 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:41,759 INFO embedding via primary model
+2026-05-14 02:55:41,772 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:55:41,772 INFO [ 44/100] semantic_drift_019             semantic_drift
+2026-05-14 02:55:42,403 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:42,835 INFO embedding via primary model
+2026-05-14 02:55:43,411 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:43,582 INFO embedding via primary model
+2026-05-14 02:55:43,591 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:55:43,591 INFO [ 45/100] semantic_drift_020             semantic_drift
+2026-05-14 02:55:44,190 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:44,946 INFO embedding via primary model
+2026-05-14 02:55:45,542 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:45,672 INFO embedding via primary model
+2026-05-14 02:55:46,371 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:46,475 INFO embedding via primary model
+2026-05-14 02:55:47,084 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:47,537 INFO embedding via primary model
+2026-05-14 02:55:48,153 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:48,343 INFO embedding via primary model
+2026-05-14 02:55:48,948 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:49,766 INFO embedding via primary model
+2026-05-14 02:55:50,478 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:50,616 INFO embedding via primary model
+2026-05-14 02:55:50,625 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:55:50,625 INFO [ 46/100] semantic_drift_021             semantic_drift
+2026-05-14 02:55:51,844 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:52,110 INFO embedding via primary model
+2026-05-14 02:55:52,706 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:52,847 INFO embedding via primary model
+2026-05-14 02:55:53,494 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:54,690 INFO embedding via primary model
+2026-05-14 02:55:55,336 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:55,443 INFO embedding via primary model
+2026-05-14 02:55:55,451 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:55:55,451 INFO [ 47/100] semantic_drift_022             semantic_drift
+2026-05-14 02:55:56,053 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:56,581 INFO embedding via primary model
+2026-05-14 02:55:57,256 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:57,375 INFO embedding via primary model
+2026-05-14 02:55:57,987 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:58,178 INFO embedding via primary model
+2026-05-14 02:55:58,840 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:55:59,447 INFO embedding via primary model
+2026-05-14 02:56:00,055 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:00,586 INFO embedding via primary model
+2026-05-14 02:56:00,593 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:56:00,593 INFO [ 48/100] semantic_drift_023             semantic_drift
+2026-05-14 02:56:01,212 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:03,296 INFO embedding via primary model
+2026-05-14 02:56:04,842 ERROR   ERROR in semantic_drift_023: 
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 178, in main
+    r = await _run_scenario(scenario, conn=conn, rd=rd)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 108, in _run_scenario
+    id_map = await _seed_facts(facts_list, pid, conn=conn, rd=rd)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 48, in _seed_facts
+    vec = await embed(fact["content"], rd)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 92, in embed
+    vec = _truncate_normalize(await _call_api(text, model))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 50, in _call_api
+    r = await client.post(
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+2026-05-14 02:56:04,845 INFO [ 49/100] semantic_drift_024             semantic_drift
+2026-05-14 02:56:05,455 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:05,573 INFO embedding via primary model
+2026-05-14 02:56:06,441 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:06,559 INFO embedding via primary model
+2026-05-14 02:56:07,192 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:07,314 INFO embedding via primary model
+2026-05-14 02:56:07,322 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:56:07,322 INFO [ 50/100] semantic_drift_025             semantic_drift
+2026-05-14 02:56:08,067 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:12,378 INFO embedding via primary model
+2026-05-14 02:56:13,022 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:14,497 INFO embedding via primary model
+2026-05-14 02:56:15,097 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:15,238 INFO embedding via primary model
+2026-05-14 02:56:16,183 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:16,302 INFO embedding via primary model
+2026-05-14 02:56:16,913 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:17,028 INFO embedding via primary model
+2026-05-14 02:56:17,639 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:17,874 INFO embedding via primary model
+2026-05-14 02:56:17,881 INFO   naive=1.00  sar=1.00  final=1.00
+2026-05-14 02:56:17,881 INFO [ 51/100] conflict_001                   conflict
+2026-05-14 02:56:18,465 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:19,964 INFO embedding via primary model
+2026-05-14 02:56:21,511 ERROR   ERROR in conflict_001: 
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 178, in main
+    r = await _run_scenario(scenario, conn=conn, rd=rd)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 108, in _run_scenario
+    id_map = await _seed_facts(facts_list, pid, conn=conn, rd=rd)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 48, in _seed_facts
+    vec = await embed(fact["content"], rd)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 92, in embed
+    vec = _truncate_normalize(await _call_api(text, model))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 50, in _call_api
+    r = await client.post(
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+2026-05-14 02:56:21,514 INFO [ 52/100] conflict_002                   conflict
+2026-05-14 02:56:22,122 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:22,245 INFO embedding via primary model
+2026-05-14 02:56:22,830 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:23,228 INFO embedding via primary model
+2026-05-14 02:56:24,494 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:25,003 INFO embedding via primary model
+2026-05-14 02:56:25,651 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:27,575 INFO embedding via primary model
+2026-05-14 02:56:28,257 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:28,392 INFO embedding via primary model
+2026-05-14 02:56:29,058 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:34,382 INFO embedding via primary model
+2026-05-14 02:56:35,014 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:39,699 INFO embedding via primary model
+2026-05-14 02:56:39,710 INFO   naive=1.00  final=1.00
+2026-05-14 02:56:39,710 INFO [ 53/100] conflict_003                   conflict
+2026-05-14 02:56:40,338 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:40,487 INFO embedding via primary model
+2026-05-14 02:56:41,113 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:43,212 INFO embedding via primary model
+2026-05-14 02:56:43,830 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:46,029 INFO embedding via primary model
+2026-05-14 02:56:46,694 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:47,588 INFO embedding via primary model
+2026-05-14 02:56:47,600 INFO   naive=1.00  final=1.00
+2026-05-14 02:56:47,600 INFO [ 54/100] conflict_004                   conflict
+2026-05-14 02:56:48,278 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:48,394 INFO embedding via primary model
+2026-05-14 02:56:49,121 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:50,044 INFO embedding via primary model
+2026-05-14 02:56:50,656 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:50,792 INFO embedding via primary model
+2026-05-14 02:56:51,723 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:51,981 INFO embedding via primary model
+2026-05-14 02:56:52,595 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:53,126 INFO embedding via primary model
+2026-05-14 02:56:53,720 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:53,842 INFO embedding via primary model
+2026-05-14 02:56:54,444 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:56,287 INFO embedding via primary model
+2026-05-14 02:56:56,315 INFO   naive=1.00  final=1.00
+2026-05-14 02:56:56,315 INFO [ 55/100] conflict_005                   conflict
+2026-05-14 02:56:56,972 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:57,920 INFO embedding via primary model
+2026-05-14 02:56:58,529 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:58,660 INFO embedding via primary model
+2026-05-14 02:56:59,242 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:56:59,802 INFO embedding via primary model
+2026-05-14 02:57:00,559 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:01,010 INFO embedding via primary model
+2026-05-14 02:57:01,632 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:01,737 INFO embedding via primary model
+2026-05-14 02:57:01,746 INFO   naive=1.00  final=1.00
+2026-05-14 02:57:01,746 INFO [ 56/100] conflict_006                   conflict
+2026-05-14 02:57:02,498 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:04,686 INFO embedding via primary model
+2026-05-14 02:57:05,307 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:06,374 INFO embedding via primary model
+2026-05-14 02:57:06,986 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:07,101 INFO embedding via primary model
+2026-05-14 02:57:07,114 INFO   naive=1.00  final=1.00
+2026-05-14 02:57:07,114 INFO [ 57/100] conflict_007                   conflict
+2026-05-14 02:57:07,728 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:07,835 INFO embedding via primary model
+2026-05-14 02:57:08,426 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:08,542 INFO embedding via primary model
+2026-05-14 02:57:09,147 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:10,587 INFO embedding via primary model
+2026-05-14 02:57:11,202 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:11,593 INFO embedding via primary model
+2026-05-14 02:57:12,232 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:13,848 INFO embedding via primary model
+2026-05-14 02:57:13,857 INFO   naive=1.00  final=1.00
+2026-05-14 02:57:13,857 INFO [ 58/100] conflict_008                   conflict
+2026-05-14 02:57:14,773 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:14,882 INFO embedding via primary model
+2026-05-14 02:57:15,476 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:15,614 INFO embedding via primary model
+2026-05-14 02:57:16,270 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:16,381 INFO embedding via primary model
+2026-05-14 02:57:16,994 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:20,934 INFO embedding via primary model
+2026-05-14 02:57:21,587 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:23,524 INFO embedding via primary model
+2026-05-14 02:57:24,155 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:24,996 INFO embedding via primary model
+2026-05-14 02:57:25,006 INFO   naive=1.00  final=1.00
+2026-05-14 02:57:25,006 INFO [ 59/100] conflict_009                   conflict
+2026-05-14 02:57:25,711 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:26,595 INFO embedding via primary model
+2026-05-14 02:57:27,227 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:35,876 INFO embedding via primary model
+2026-05-14 02:57:36,513 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:36,673 INFO embedding via primary model
+2026-05-14 02:57:37,268 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:37,379 INFO embedding via primary model
+2026-05-14 02:57:37,387 INFO   naive=1.00  final=1.00
+2026-05-14 02:57:37,387 INFO [ 60/100] conflict_010                   conflict
+2026-05-14 02:57:38,648 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:43,790 INFO embedding via primary model
+2026-05-14 02:57:44,380 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:44,538 INFO embedding via primary model
+2026-05-14 02:57:45,215 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:45,336 INFO embedding via primary model
+2026-05-14 02:57:45,963 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:46,813 INFO embedding via primary model
+2026-05-14 02:57:47,399 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:49,012 INFO embedding via primary model
+2026-05-14 02:57:49,740 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:52,240 INFO embedding via primary model
+2026-05-14 02:57:52,250 INFO   naive=1.00  final=1.00
+2026-05-14 02:57:52,250 INFO [ 61/100] conflict_011                   conflict
+2026-05-14 02:57:53,287 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:53,470 INFO embedding via primary model
+2026-05-14 02:57:54,455 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:57:57,177 INFO embedding via primary model
+2026-05-14 02:57:57,197 INFO   naive=1.00  final=1.00
+2026-05-14 02:57:57,197 INFO [ 62/100] conflict_012                   conflict
+2026-05-14 02:57:59,319 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:02,839 INFO embedding via primary model
+2026-05-14 02:58:03,511 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:06,926 INFO embedding via primary model
+2026-05-14 02:58:07,037 INFO   naive=1.00  final=1.00
+2026-05-14 02:58:07,037 INFO [ 63/100] conflict_013                   conflict
+2026-05-14 02:58:07,660 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:10,658 INFO embedding via primary model
+2026-05-14 02:58:11,299 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:11,680 INFO embedding via primary model
+2026-05-14 02:58:12,307 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:12,432 INFO embedding via primary model
+2026-05-14 02:58:12,442 INFO   naive=1.00  final=1.00
+2026-05-14 02:58:12,442 INFO [ 64/100] conflict_014                   conflict
+2026-05-14 02:58:13,145 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:13,284 INFO embedding via primary model
+2026-05-14 02:58:13,896 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:14,479 INFO embedding via primary model
+2026-05-14 02:58:15,067 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:16,897 INFO embedding via primary model
+2026-05-14 02:58:17,528 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:18,698 INFO embedding via primary model
+2026-05-14 02:58:19,492 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:20,889 INFO embedding via primary model
+2026-05-14 02:58:20,985 INFO   naive=1.00  final=1.00
+2026-05-14 02:58:20,985 INFO [ 65/100] conflict_015                   conflict
+2026-05-14 02:58:21,584 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:25,107 INFO embedding via primary model
+2026-05-14 02:58:25,702 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:26,874 INFO embedding via primary model
+2026-05-14 02:58:27,560 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:28,379 INFO embedding via primary model
+2026-05-14 02:58:29,068 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:30,137 INFO embedding via primary model
+2026-05-14 02:58:30,829 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:31,517 INFO embedding via primary model
+2026-05-14 02:58:31,565 INFO   naive=1.00  final=1.00
+2026-05-14 02:58:31,565 INFO [ 66/100] conflict_016                   conflict
+2026-05-14 02:58:32,232 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:32,346 INFO embedding via primary model
+2026-05-14 02:58:33,044 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:33,208 INFO embedding via primary model
+2026-05-14 02:58:33,807 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:36,099 INFO embedding via primary model
+2026-05-14 02:58:41,477 WARNING embedding primary failed: 
+2026-05-14 02:58:42,962 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 404 Not Found"
+2026-05-14 02:58:42,990 WARNING embedding fallback failed: Client error '404 Not Found' for url 'https://openrouter.ai/api/v1/embeddings'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2026-05-14 02:58:43,039 ERROR   ERROR in conflict_016: Both embedding models are unavailable
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 92, in embed
+    vec = _truncate_normalize(await _call_api(text, model))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 64, in _call_api
+    r.raise_for_status()
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '404 Not Found' for url 'https://openrouter.ai/api/v1/embeddings'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 178, in main
+    r = await _run_scenario(scenario, conn=conn, rd=rd)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 108, in _run_scenario
+    id_map = await _seed_facts(facts_list, pid, conn=conn, rd=rd)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 48, in _seed_facts
+    vec = await embed(fact["content"], rd)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 100, in embed
+    raise RuntimeError("Both embedding models are unavailable") from last_exc
+RuntimeError: Both embedding models are unavailable
+2026-05-14 02:58:43,040 INFO [ 67/100] conflict_017                   conflict
+2026-05-14 02:58:43,811 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:44,876 INFO embedding via primary model
+2026-05-14 02:58:45,585 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:46,398 INFO embedding via primary model
+2026-05-14 02:58:47,107 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:47,600 INFO embedding via primary model
+2026-05-14 02:58:48,379 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:49,643 INFO embedding via primary model
+2026-05-14 02:58:49,651 INFO   naive=1.00  final=1.00
+2026-05-14 02:58:49,651 INFO [ 68/100] conflict_018                   conflict
+2026-05-14 02:58:50,227 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:50,648 INFO embedding via primary model
+2026-05-14 02:58:51,558 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:52,024 INFO embedding via primary model
+2026-05-14 02:58:52,623 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:53,085 INFO embedding via primary model
+2026-05-14 02:58:53,684 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:54,673 INFO embedding via primary model
+2026-05-14 02:58:54,710 INFO   naive=1.00  final=1.00
+2026-05-14 02:58:54,710 INFO [ 69/100] conflict_019                   conflict
+2026-05-14 02:58:56,229 ERROR   ERROR in conflict_019: 
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 178, in main
+    r = await _run_scenario(scenario, conn=conn, rd=rd)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 108, in _run_scenario
+    id_map = await _seed_facts(facts_list, pid, conn=conn, rd=rd)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 48, in _seed_facts
+    vec = await embed(fact["content"], rd)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 92, in embed
+    vec = _truncate_normalize(await _call_api(text, model))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 50, in _call_api
+    r = await client.post(
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+2026-05-14 02:58:56,232 INFO [ 70/100] conflict_020                   conflict
+2026-05-14 02:58:56,855 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:56,965 INFO embedding via primary model
+2026-05-14 02:58:57,564 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:57,968 INFO embedding via primary model
+2026-05-14 02:58:58,700 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:58:59,484 INFO embedding via primary model
+2026-05-14 02:59:00,159 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:00,477 INFO embedding via primary model
+2026-05-14 02:59:02,140 ERROR   ERROR in conflict_020: 
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 178, in main
+    r = await _run_scenario(scenario, conn=conn, rd=rd)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 108, in _run_scenario
+    id_map = await _seed_facts(facts_list, pid, conn=conn, rd=rd)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 48, in _seed_facts
+    vec = await embed(fact["content"], rd)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 92, in embed
+    vec = _truncate_normalize(await _call_api(text, model))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 50, in _call_api
+    r = await client.post(
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+2026-05-14 02:59:02,142 INFO [ 71/100] conflict_021                   conflict
+2026-05-14 02:59:02,776 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:03,628 INFO embedding via primary model
+2026-05-14 02:59:04,283 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:04,710 INFO embedding via primary model
+2026-05-14 02:59:05,303 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:05,419 INFO embedding via primary model
+2026-05-14 02:59:06,981 ERROR   ERROR in conflict_021: 
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 178, in main
+    r = await _run_scenario(scenario, conn=conn, rd=rd)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 108, in _run_scenario
+    id_map = await _seed_facts(facts_list, pid, conn=conn, rd=rd)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 48, in _seed_facts
+    vec = await embed(fact["content"], rd)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 92, in embed
+    vec = _truncate_normalize(await _call_api(text, model))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 50, in _call_api
+    r = await client.post(
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+2026-05-14 02:59:06,983 INFO [ 72/100] conflict_022                   conflict
+2026-05-14 02:59:07,564 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:07,963 INFO embedding via primary model
+2026-05-14 02:59:09,183 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:09,566 INFO embedding via primary model
+2026-05-14 02:59:10,179 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:10,693 INFO embedding via primary model
+2026-05-14 02:59:11,305 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:11,443 INFO embedding via primary model
+2026-05-14 02:59:12,087 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:12,212 INFO embedding via primary model
+2026-05-14 02:59:12,222 INFO   naive=1.00  final=1.00
+2026-05-14 02:59:12,222 INFO [ 73/100] conflict_023                   conflict
+2026-05-14 02:59:12,806 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:13,191 INFO embedding via primary model
+2026-05-14 02:59:13,809 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:13,935 INFO embedding via primary model
+2026-05-14 02:59:14,529 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:15,216 INFO embedding via primary model
+2026-05-14 02:59:15,920 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:16,049 INFO embedding via primary model
+2026-05-14 02:59:17,252 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:17,756 INFO embedding via primary model
+2026-05-14 02:59:17,765 INFO   naive=1.00  final=1.00
+2026-05-14 02:59:17,765 INFO [ 74/100] conflict_024                   conflict
+2026-05-14 02:59:18,395 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:19,138 INFO embedding via primary model
+2026-05-14 02:59:19,768 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:19,936 INFO embedding via primary model
+2026-05-14 02:59:20,544 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:20,655 INFO embedding via primary model
+2026-05-14 02:59:21,348 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:22,017 INFO embedding via primary model
+2026-05-14 02:59:23,206 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:23,327 INFO embedding via primary model
+2026-05-14 02:59:23,339 INFO   naive=1.00  final=1.00
+2026-05-14 02:59:23,339 INFO [ 75/100] conflict_025                   conflict
+2026-05-14 02:59:23,982 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:24,404 INFO embedding via primary model
+2026-05-14 02:59:24,987 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:25,476 INFO embedding via primary model
+2026-05-14 02:59:26,083 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:26,583 INFO embedding via primary model
+2026-05-14 02:59:27,492 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:27,691 INFO embedding via primary model
+2026-05-14 02:59:28,393 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:28,830 INFO embedding via primary model
+2026-05-14 02:59:28,839 INFO   naive=1.00  final=1.00
+2026-05-14 02:59:28,839 INFO [ 76/100] cross_session_001              cross_session
+2026-05-14 02:59:29,416 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:29,879 INFO embedding via primary model
+2026-05-14 02:59:31,098 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:31,216 INFO embedding via primary model
+2026-05-14 02:59:31,804 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:31,919 INFO embedding via primary model
+2026-05-14 02:59:32,562 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:32,694 INFO embedding via primary model
+2026-05-14 02:59:33,355 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:33,770 INFO embedding via primary model
+2026-05-14 02:59:33,777 INFO   naive=1.00  final=1.00
+2026-05-14 02:59:33,777 INFO [ 77/100] cross_session_002              cross_session
+2026-05-14 02:59:34,430 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:35,284 INFO embedding via primary model
+2026-05-14 02:59:35,898 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:36,003 INFO embedding via primary model
+2026-05-14 02:59:36,678 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:37,000 INFO embedding via primary model
+2026-05-14 02:59:37,606 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:37,746 INFO embedding via primary model
+2026-05-14 02:59:38,389 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:38,825 INFO embedding via primary model
+2026-05-14 02:59:38,834 INFO   naive=1.00  final=1.00
+2026-05-14 02:59:38,834 INFO [ 78/100] cross_session_003              cross_session
+2026-05-14 02:59:39,471 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:39,893 INFO embedding via primary model
+2026-05-14 02:59:40,554 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:41,212 INFO embedding via primary model
+2026-05-14 02:59:41,913 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:42,021 INFO embedding via primary model
+2026-05-14 02:59:42,685 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:43,421 INFO embedding via primary model
+2026-05-14 02:59:44,099 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:44,547 INFO embedding via primary model
+2026-05-14 02:59:45,673 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:46,345 INFO embedding via primary model
+2026-05-14 02:59:46,355 INFO   naive=1.00  final=1.00
+2026-05-14 02:59:46,355 INFO [ 79/100] cross_session_004              cross_session
+2026-05-14 02:59:47,069 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:47,479 INFO embedding via primary model
+2026-05-14 02:59:48,171 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:48,669 INFO embedding via primary model
+2026-05-14 02:59:49,872 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:50,455 INFO embedding via primary model
+2026-05-14 02:59:51,062 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:51,446 INFO embedding via primary model
+2026-05-14 02:59:52,150 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:52,602 INFO embedding via primary model
+2026-05-14 02:59:52,614 INFO   naive=1.00  final=1.00
+2026-05-14 02:59:52,614 INFO [ 80/100] cross_session_005              cross_session
+2026-05-14 02:59:53,238 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:53,364 INFO embedding via primary model
+2026-05-14 02:59:53,997 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:54,121 INFO embedding via primary model
+2026-05-14 02:59:54,883 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:55,000 INFO embedding via primary model
+2026-05-14 02:59:55,632 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:55,758 INFO embedding via primary model
+2026-05-14 02:59:56,382 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:56,509 INFO embedding via primary model
+2026-05-14 02:59:57,148 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:57,594 INFO embedding via primary model
+2026-05-14 02:59:57,617 INFO   naive=1.00  final=1.00
+2026-05-14 02:59:57,617 INFO [ 81/100] cross_session_006              cross_session
+2026-05-14 02:59:58,217 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 02:59:59,855 INFO embedding via primary model
+2026-05-14 03:00:00,509 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:00,626 INFO embedding via primary model
+2026-05-14 03:00:01,233 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:01,643 INFO embedding via primary model
+2026-05-14 03:00:02,390 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:03,318 INFO embedding via primary model
+2026-05-14 03:00:03,940 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:04,057 INFO embedding via primary model
+2026-05-14 03:00:04,066 INFO   naive=1.00  final=1.00
+2026-05-14 03:00:04,066 INFO [ 82/100] cross_session_007              cross_session
+2026-05-14 03:00:04,644 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:04,752 INFO embedding via primary model
+2026-05-14 03:00:05,367 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:06,917 INFO embedding via primary model
+2026-05-14 03:00:07,615 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:07,737 INFO embedding via primary model
+2026-05-14 03:00:08,473 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:08,640 INFO embedding via primary model
+2026-05-14 03:00:09,238 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:10,571 INFO embedding via primary model
+2026-05-14 03:00:11,311 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:12,375 INFO embedding via primary model
+2026-05-14 03:00:12,388 INFO   naive=1.00  final=1.00
+2026-05-14 03:00:12,388 INFO [ 83/100] cross_session_008              cross_session
+2026-05-14 03:00:13,067 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:13,560 INFO embedding via primary model
+2026-05-14 03:00:14,161 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:14,274 INFO embedding via primary model
+2026-05-14 03:00:14,888 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:15,020 INFO embedding via primary model
+2026-05-14 03:00:20,405 WARNING embedding primary failed: 
+2026-05-14 03:00:21,038 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 404 Not Found"
+2026-05-14 03:00:21,046 WARNING embedding fallback failed: Client error '404 Not Found' for url 'https://openrouter.ai/api/v1/embeddings'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+2026-05-14 03:00:21,055 ERROR   ERROR in cross_session_008: Both embedding models are unavailable
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 92, in embed
+    vec = _truncate_normalize(await _call_api(text, model))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 64, in _call_api
+    r.raise_for_status()
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_models.py", line 829, in raise_for_status
+    raise HTTPStatusError(message, request=request, response=self)
+httpx.HTTPStatusError: Client error '404 Not Found' for url 'https://openrouter.ai/api/v1/embeddings'
+For more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 178, in main
+    r = await _run_scenario(scenario, conn=conn, rd=rd)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 119, in _run_scenario
+    naive_facts = await get_facts(
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\tools\get_facts.py", line 66, in get_facts
+    vec = await embed(about, redis)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 100, in embed
+    raise RuntimeError("Both embedding models are unavailable") from last_exc
+RuntimeError: Both embedding models are unavailable
+2026-05-14 03:00:21,056 INFO [ 84/100] cross_session_009              cross_session
+2026-05-14 03:00:21,922 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:22,029 INFO embedding via primary model
+2026-05-14 03:00:22,042 INFO   naive=1.00  final=1.00
+2026-05-14 03:00:22,042 INFO [ 85/100] cross_session_010              cross_session
+2026-05-14 03:00:22,734 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:23,204 INFO embedding via primary model
+2026-05-14 03:00:23,805 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:24,225 INFO embedding via primary model
+2026-05-14 03:00:24,841 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:24,957 INFO embedding via primary model
+2026-05-14 03:00:25,585 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:26,649 INFO embedding via primary model
+2026-05-14 03:00:27,245 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:27,406 INFO embedding via primary model
+2026-05-14 03:00:27,422 INFO   naive=1.00  final=1.00
+2026-05-14 03:00:27,422 INFO [ 86/100] cross_session_011              cross_session
+2026-05-14 03:00:28,121 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:28,391 INFO embedding via primary model
+2026-05-14 03:00:28,993 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:31,884 INFO embedding via primary model
+2026-05-14 03:00:31,922 INFO   naive=1.00  final=1.00
+2026-05-14 03:00:31,922 INFO [ 87/100] cross_session_012              cross_session
+2026-05-14 03:00:32,550 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:32,716 INFO embedding via primary model
+2026-05-14 03:00:33,365 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:34,966 INFO embedding via primary model
+2026-05-14 03:00:35,593 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:36,604 INFO embedding via primary model
+2026-05-14 03:00:36,612 INFO   naive=1.00  final=1.00
+2026-05-14 03:00:36,612 INFO [ 88/100] cross_session_013              cross_session
+2026-05-14 03:00:37,262 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:37,398 INFO embedding via primary model
+2026-05-14 03:00:38,025 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:38,180 INFO embedding via primary model
+2026-05-14 03:00:38,834 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:41,815 INFO embedding via primary model
+2026-05-14 03:00:41,848 INFO   naive=1.00  final=1.00
+2026-05-14 03:00:41,848 INFO [ 89/100] cross_session_014              cross_session
+2026-05-14 03:00:42,648 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:42,766 INFO embedding via primary model
+2026-05-14 03:00:43,420 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:43,704 INFO embedding via primary model
+2026-05-14 03:00:43,728 INFO   naive=1.00  final=1.00
+2026-05-14 03:00:43,728 INFO [ 90/100] cross_session_015              cross_session
+2026-05-14 03:00:44,324 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:44,772 INFO embedding via primary model
+2026-05-14 03:00:45,373 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:45,792 INFO embedding via primary model
+2026-05-14 03:00:46,615 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:47,590 INFO embedding via primary model
+2026-05-14 03:00:48,363 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:49,300 INFO embedding via primary model
+2026-05-14 03:00:49,311 INFO   naive=1.00  final=1.00
+2026-05-14 03:00:49,311 INFO [ 91/100] cross_session_016              cross_session
+2026-05-14 03:00:49,903 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:50,024 INFO embedding via primary model
+2026-05-14 03:00:50,626 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:51,228 INFO embedding via primary model
+2026-05-14 03:00:51,888 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:52,374 INFO embedding via primary model
+2026-05-14 03:00:53,958 ERROR   ERROR in cross_session_016: 
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 178, in main
+    r = await _run_scenario(scenario, conn=conn, rd=rd)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 119, in _run_scenario
+    naive_facts = await get_facts(
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\tools\get_facts.py", line 66, in get_facts
+    vec = await embed(about, redis)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 92, in embed
+    vec = _truncate_normalize(await _call_api(text, model))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 50, in _call_api
+    r = await client.post(
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+2026-05-14 03:00:53,960 INFO [ 92/100] cross_session_017              cross_session
+2026-05-14 03:00:54,624 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:55,239 INFO embedding via primary model
+2026-05-14 03:00:55,988 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:56,106 INFO embedding via primary model
+2026-05-14 03:00:56,697 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:00:56,818 INFO embedding via primary model
+2026-05-14 03:00:57,444 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:00,022 INFO embedding via primary model
+2026-05-14 03:01:00,613 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:01,219 INFO embedding via primary model
+2026-05-14 03:01:01,227 INFO   naive=1.00  final=1.00
+2026-05-14 03:01:01,227 INFO [ 93/100] cross_session_018              cross_session
+2026-05-14 03:01:01,926 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:02,349 INFO embedding via primary model
+2026-05-14 03:01:02,986 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:04,908 INFO embedding via primary model
+2026-05-14 03:01:05,562 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:05,683 INFO embedding via primary model
+2026-05-14 03:01:05,706 INFO   naive=1.00  final=1.00
+2026-05-14 03:01:05,706 INFO [ 94/100] cross_session_019              cross_session
+2026-05-14 03:01:06,429 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:06,952 INFO embedding via primary model
+2026-05-14 03:01:07,581 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:07,987 INFO embedding via primary model
+2026-05-14 03:01:08,595 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:08,731 INFO embedding via primary model
+2026-05-14 03:01:09,338 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:09,618 INFO embedding via primary model
+2026-05-14 03:01:11,169 ERROR   ERROR in cross_session_019: 
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 101, in handle_async_request
+    raise exc
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_async\connection.py", line 156, in _connect
+    stream = await stream.start_tls(**kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_backends\anyio.py", line 67, in start_tls
+    with map_exceptions(exc_map):
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 178, in main
+    r = await _run_scenario(scenario, conn=conn, rd=rd)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 119, in _run_scenario
+    naive_facts = await get_facts(
+                  ^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\tools\get_facts.py", line 66, in get_facts
+    vec = await embed(about, redis)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 92, in embed
+    vec = _truncate_normalize(await _call_api(text, model))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\src\mlms\embedding.py", line 50, in _call_api
+    r = await client.post(
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "C:\Users\eb\Documents\Repos\mlms\.venv\Lib\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError
+2026-05-14 03:01:11,172 INFO [ 95/100] cross_session_020              cross_session
+2026-05-14 03:01:11,861 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:12,494 INFO embedding via primary model
+2026-05-14 03:01:13,090 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:13,204 INFO embedding via primary model
+2026-05-14 03:01:14,100 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:14,209 INFO embedding via primary model
+2026-05-14 03:01:14,850 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:14,978 INFO embedding via primary model
+2026-05-14 03:01:15,681 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:15,793 INFO embedding via primary model
+2026-05-14 03:01:16,451 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:17,190 INFO embedding via primary model
+2026-05-14 03:01:17,201 INFO   naive=1.00  final=1.00
+2026-05-14 03:01:17,201 INFO [ 96/100] cross_session_021              cross_session
+2026-05-14 03:01:17,787 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:18,255 INFO embedding via primary model
+2026-05-14 03:01:18,868 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:19,458 INFO embedding via primary model
+2026-05-14 03:01:20,066 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:20,178 INFO embedding via primary model
+2026-05-14 03:01:20,813 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:22,180 INFO embedding via primary model
+2026-05-14 03:01:22,779 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:22,911 INFO embedding via primary model
+2026-05-14 03:01:22,920 INFO   naive=1.00  final=1.00
+2026-05-14 03:01:22,920 INFO [ 97/100] cross_session_022              cross_session
+2026-05-14 03:01:23,549 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:23,677 INFO embedding via primary model
+2026-05-14 03:01:24,263 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:26,467 INFO embedding via primary model
+2026-05-14 03:01:27,062 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:27,211 INFO embedding via primary model
+2026-05-14 03:01:27,834 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:28,015 INFO embedding via primary model
+2026-05-14 03:01:28,665 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:29,074 INFO embedding via primary model
+2026-05-14 03:01:29,664 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:30,057 INFO embedding via primary model
+2026-05-14 03:01:30,066 INFO   naive=1.00  final=1.00
+2026-05-14 03:01:30,066 INFO [ 98/100] cross_session_023              cross_session
+2026-05-14 03:01:30,642 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:31,058 INFO embedding via primary model
+2026-05-14 03:01:31,760 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:32,208 INFO embedding via primary model
+2026-05-14 03:01:32,801 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:32,923 INFO embedding via primary model
+2026-05-14 03:01:33,532 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:33,637 INFO embedding via primary model
+2026-05-14 03:01:34,476 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:34,944 INFO embedding via primary model
+2026-05-14 03:01:35,695 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:35,814 INFO embedding via primary model
+2026-05-14 03:01:35,835 INFO   naive=1.00  final=1.00
+2026-05-14 03:01:35,835 INFO [ 99/100] cross_session_024              cross_session
+2026-05-14 03:01:36,429 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:36,996 INFO embedding via primary model
+2026-05-14 03:01:37,610 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:37,998 INFO embedding via primary model
+2026-05-14 03:01:38,601 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:38,737 INFO embedding via primary model
+2026-05-14 03:01:39,325 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:40,022 INFO embedding via primary model
+2026-05-14 03:01:40,032 INFO   naive=1.00  final=1.00
+2026-05-14 03:01:40,032 INFO [100/100] cross_session_025              cross_session
+2026-05-14 03:01:40,676 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:41,063 INFO embedding via primary model
+2026-05-14 03:01:42,023 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:42,567 INFO embedding via primary model
+2026-05-14 03:01:43,168 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:43,283 INFO embedding via primary model
+2026-05-14 03:01:43,944 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:44,373 INFO embedding via primary model
+2026-05-14 03:01:45,295 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:45,443 INFO embedding via primary model
+2026-05-14 03:01:46,077 INFO HTTP Request: POST https://openrouter.ai/api/v1/embeddings "HTTP/1.1 200 OK"
+2026-05-14 03:01:46,469 INFO embedding via primary model
+2026-05-14 03:01:46,478 INFO   naive=1.00  final=1.00
+Traceback (most recent call last):
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 220, in <module>
+
+=======================================================
+RECALL@5 RESULTS
+=======================================================
+  lexical                0.880  (n=25)
+  semantic_drift         0.800  (n=25)
+  conflict               0.800  (n=25)
+  cross_session          0.880  (n=25)
+    asyncio.run(main())
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\asyncio\base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\eb\Documents\Repos\mlms\scripts\run_benchmark.py", line 205, in main
+    print(f"  {'OVERALL':<22} {overall:.3f}  [{status} � target\u2265{PRECISION_AT_5_TARGET}]")
+  File "C:\Users\eb\AppData\Local\Programs\Python\Python311\Lib\encodings\cp1251.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2265' in position 46: character maps to <undefined>

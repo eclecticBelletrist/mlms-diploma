@@ -1,0 +1,25 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+.env.*
+*.egg-info/
+dist/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+.coverage.*
+results/
+
+# local dev artifacts
+start_mcp.bat
+.claude/scheduled_tasks.lock
+.claude/settings.local.json
+2026-*.txt
+
+# docs excluded from public
+docs/chapter2_brief.md
+GITHUB_STARS.md
+scripts/install_skills.sh

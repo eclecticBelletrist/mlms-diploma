@@ -1,0 +1,13 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "anthropic/claude-sonnet-4-5",
+  "instructions": [
+    "CLAUDE.md",
+    "docs/chapter2_brief.md"
+  ],
+  "compaction": {
+    "enabled": true,
+    "message": "When compacting, always preserve: (1) which of steps 1-13 are complete, (2) current alembic head revision, (3) failing test names if any, (4) latest p99 and precision@5 numbers. REDIS_SESSION_TTL=172800 — never lose this."
+  },
+  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"]
+}

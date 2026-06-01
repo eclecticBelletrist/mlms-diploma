@@ -1,0 +1,107 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mlms"
+version = "0.1.0"
+description = "Multi-Layer Memory System — MCP server for persistent LLM agent memory"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "mcp>=1.0",
+    "asyncpg>=0.29",
+    "psycopg[async]>=3.1",
+    "pgvector>=0.3",
+    "redis[asyncio]>=5.0",
+    "alembic>=1.13",
+    "sqlalchemy[asyncio]>=2.0",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "httpx>=0.27",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2",
+    "pytest-asyncio>=0.23",
+    "pytest-cov>=5.0",
+    "pytest-benchmark>=4.0",
+    "mypy>=1.10",
+    "ruff>=0.5",
+    "types-redis",
+    "rank-bm25>=0.2",
+]
+
+# ─── Ruff ────────────────────────────────────────────────────────────────────
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["src"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "SIM", # flake8-simplify
+    "ASYNC", # flake8-async (catches sync calls in async functions)
+]
+ignore = [
+    "E501",  # line length — handled by formatter
+    "B008",  # FastAPI Depends() in function defaults
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["mlms"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+# ─── Mypy ────────────────────────────────────────────────────────────────────
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+ignore_missing_imports = true
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = ["alembic.*", "pgvector.*"]
+ignore_errors = true
+
+# ─── Pytest ──────────────────────────────────────────────────────────────────
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = [
+    "--strict-markers",
+    "-v",
+]
+markers = [
+    "unit: fast, no DB/Redis required",
+    "integration: requires docker compose up",
+    "benchmark: latency and precision measurements",
+]
+
+[tool.coverage.run]
+source = ["src/mlms"]
+omit = ["tests/*", "alembic/*", "scripts/*"]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
+skip_empty = true
+
+# ─── Hatch ───────────────────────────────────────────────────────────────────
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mlms"]
