@@ -261,6 +261,8 @@ async def export_project(
 if __name__ == "__main__":
     transport = settings.mcp_transport
     if transport in ("sse", "streamable-http"):
-        mcp.run(transport=transport, host=settings.mcp_host, port=settings.mcp_port)
+        mcp.settings.host = settings.mcp_host
+        mcp.settings.port = settings.mcp_port
+        mcp.run(transport=transport)
     else:
         mcp.run()
