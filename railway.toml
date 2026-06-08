@@ -3,6 +3,4 @@ builder = "dockerfile"
 
 [deploy]
 startCommand = "python -m mlms.server"
-healthcheckPath = "/sse"
-healthcheckTimeout = 30
 restartPolicyType = "ON_FAILURE"
