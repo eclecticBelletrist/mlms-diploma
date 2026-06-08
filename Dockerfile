@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip install uv
 
 COPY pyproject.toml .
+COPY alembic.ini .
+COPY alembic/ alembic/
 COPY src/ src/
 
 RUN uv pip install --system -e .
