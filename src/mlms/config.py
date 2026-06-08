@@ -36,5 +36,9 @@ class Settings(BaseSettings):
         alias="EMBEDDING_API_BASE",
     )
 
+    mcp_transport: str = Field(default="stdio", alias="MCP_TRANSPORT")
+    mcp_host: str = Field(default="0.0.0.0", alias="MCP_HOST")
+    mcp_port: int = Field(default=8000, alias="MCP_PORT")
+
 
 settings = Settings()

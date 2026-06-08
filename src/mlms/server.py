@@ -63,21 +63,36 @@ async def memorize(
 ) -> dict[str, Any]:
     """Store a memory in the long-term memory system.
 
-    type must be one of: fact | event | skill | session_log
+    type: "fact" | "event" | "skill" | "session_log"
 
-    metadata required fields by type:
-    - fact:       {"project_id": "<uuid>"}
-                  optional: "tags" (list[str]), "category" (str), "chat_id" (str)
-    - event:      {"project_id": "<uuid>", "title": "<short title>", "event_type": "<phase|action|decision>"}
-                  optional: "chat_id" (str)
-    - skill:      {"name": "<skill name>"}
-                  optional: "domain" (str), "trigger_conditions" (str), "chat_id" (str), "project_id" (str)
-    - session_log:{"chat_id": "<str>", "label": "<str max 100 chars>", "type": "<str>"}
-                  optional: "project_id" (str)
+    metadata by type — copy these templates exactly:
 
-    project_id for demo: always use "a1b2c3d4-0000-0000-0000-000000000001" (pre-seeded in DB).
-    event_type values: "phase" | "action" | "decision"
-    session_log type values: "topic" | "decision" | "problem" | "solution" | "insight" | "action" | "source" | "context" | "result"
+    fact:
+      {"project_id": "a1b2c3d4-0000-0000-0000-000000000001"}
+      optional: "tags": ["list","of","strings"], "category": "string", "chat_id": "any-string-you-choose"
+
+    event:
+      {"project_id": "a1b2c3d4-0000-0000-0000-000000000001",
+       "title": "Short title under 100 chars",
+       "event_type": "phase"}
+      event_type values: "phase" | "action" | "decision"
+      optional: "chat_id": "any-string"
+
+    skill:
+      {"name": "skill name"}
+      optional: "domain": "string", "trigger_conditions": "string",
+                "chat_id": "any-string", "project_id": "a1b2c3d4-0000-0000-0000-000000000001"
+
+    session_log:
+      {"chat_id": "any-string-you-choose",
+       "label": "Short label under 100 chars",
+       "type": "topic"}
+      type values: "topic"|"decision"|"problem"|"solution"|"insight"|"action"|"source"|"context"|"result"
+      optional: "project_id": "a1b2c3d4-0000-0000-0000-000000000001"
+
+    NOTE: Never invent project_id UUIDs — always use the one above for demo.
+    NOTE: memory_id in the response is server-generated — do not pass it back anywhere.
+    Returns: {"ok": true, "memory_id": "<server-generated-id>"}
     """
     app: _AppCtx = ctx.request_context.lifespan_context
     return await _memorize(
@@ -97,7 +112,16 @@ async def get_facts(
     tags: list[str] | None = None,
     limit: int = 10,
 ) -> list[dict[str, Any]]:
-    """Retrieve facts from semantic memory. Hybrid search when about is provided."""
+    """Retrieve current facts from semantic memory.
+
+    about: natural-language query for vector search, e.g. "what is the project deadline"
+    project_id: "a1b2c3d4-0000-0000-0000-000000000001" for demo. Omit to search all projects.
+    tags: optional list to filter, e.g. ["backend", "auth"]
+    limit: max results, default 10
+
+    Returns list of fact objects: id, content, tags, category, version, created_at.
+    Only returns is_current=TRUE facts (outdated versions are excluded automatically).
+    """
     app: _AppCtx = ctx.request_context.lifespan_context
     rows = await _get_facts(
         about=about,
@@ -118,7 +142,13 @@ async def get_timeline(
     event_type: str | None = None,
     limit: int = 20,
 ) -> list[dict[str, Any]]:
-    """Query timeline events. time_range: {start, end} as ISO8601 strings."""
+    """Query timeline events (phases, actions, decisions).
+
+    project_id: "a1b2c3d4-0000-0000-0000-000000000001" for demo
+    time_range: {"start": "2025-01-01T00:00:00Z", "end": "2026-12-31T23:59:59Z"} — both optional
+    event_type: "phase" | "action" | "decision" — optional filter
+    limit: default 20
+    """
     app: _AppCtx = ctx.request_context.lifespan_context
     rows = await _get_timeline(
         project_id=project_id,
@@ -139,7 +169,17 @@ async def get_session_log(
     semantic_query: str | None = None,
     project_id: str | None = None,
 ) -> list[dict[str, Any]]:
-    """In-session (chat_id) or cross-session (semantic_query) log retrieval. Modes are mutually exclusive. project_id scopes cross-session search."""
+    """Retrieve session log entries. Two exclusive modes — do NOT combine chat_id and semantic_query.
+
+    Mode 1 — current session: provide chat_id, omit semantic_query
+      chat_id: the session string you used when calling memorize
+      entry_type: optional filter string
+
+    Mode 2 — cross-session search: provide semantic_query, omit chat_id
+      semantic_query: natural-language search, e.g. "authentication decisions"
+      project_id: optional scope — "a1b2c3d4-0000-0000-0000-000000000001"
+      limit: default 50
+    """
     app: _AppCtx = ctx.request_context.lifespan_context
     rows = await _get_session_log(
         chat_id=chat_id,
@@ -193,7 +233,16 @@ async def search_memory(
     ctx: Context[Any, Any, Any],
     filters: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
-    """Search across all memory layers simultaneously. filters: project_id, time_range, memory_type."""
+    """Search across ALL memory layers simultaneously (facts + timeline + session_log + skills).
+
+    query: natural-language search, e.g. "what did we decide about the database"
+    filters (optional dict):
+      "project_id": "a1b2c3d4-0000-0000-0000-000000000001"
+      "memory_type": "fact" | "event" | "skill" | "session_log"
+      "time_range": {"start": "ISO8601", "end": "ISO8601"}
+
+    Returns ranked results from all layers with a "layer" field indicating source.
+    """
     app: _AppCtx = ctx.request_context.lifespan_context
     rows = await _search_memory(query=query, filters=filters, conn=app.conn, redis=app.redis)
     return [r.model_dump(mode="json") for r in rows]
@@ -210,4 +259,8 @@ async def export_project(
 
 
 if __name__ == "__main__":
-    mcp.run()
+    transport = settings.mcp_transport
+    if transport in ("sse", "streamable-http"):
+        mcp.run(transport=transport, host=settings.mcp_host, port=settings.mcp_port)
+    else:
+        mcp.run()
