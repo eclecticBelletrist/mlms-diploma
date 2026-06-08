@@ -43,6 +43,11 @@ async def seed() -> None:
         ("Основной заказчик — ООО «Горизонт», контакт — Петров Сергей", ["client"]),
     ]
 
+    await conn.execute(
+        "INSERT INTO projects (id, name) VALUES (%s, %s) ON CONFLICT (id) DO NOTHING",
+        (DEMO_PROJECT, "Demo Project"),
+    )
+
     print("Seeding facts (session 1)...")
     for content, tags in facts:
         result = await memorize(
