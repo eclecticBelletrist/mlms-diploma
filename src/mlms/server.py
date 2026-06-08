@@ -39,7 +39,7 @@ def _pg_dsn(url: str) -> str:
 @asynccontextmanager
 async def _lifespan(_server: FastMCP) -> AsyncIterator[_AppCtx]:
     conn = await psycopg.AsyncConnection.connect(_pg_dsn(settings.database_url), autocommit=True)
-    r = aioredis.from_url(settings.redis_url)
+    r = aioredis.from_url(settings.redis_url, decode_responses=True)
     try:
         yield _AppCtx(conn=conn, redis=r)
     finally:

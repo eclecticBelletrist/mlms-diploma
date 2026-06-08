@@ -33,7 +33,7 @@ def _pg_dsn(url: str) -> str:
 
 async def seed() -> None:
     conn = await psycopg.AsyncConnection.connect(_pg_dsn(settings.database_url), autocommit=True)
-    r = aioredis.from_url(settings.redis_url)
+    r = aioredis.from_url(settings.redis_url, decode_responses=True)
 
     facts = [
         ("Команда разработки: Иван (бэкенд), Маша (дизайн), Антон (фронтенд)", ["team"]),
