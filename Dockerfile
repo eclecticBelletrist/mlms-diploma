@@ -12,6 +12,7 @@ COPY pyproject.toml .
 COPY alembic.ini .
 COPY alembic/ alembic/
 COPY src/ src/
+COPY scripts/ scripts/
 
 RUN uv pip install --system -e .
 
