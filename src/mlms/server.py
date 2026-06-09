@@ -48,6 +48,7 @@ async def _lifespan(_server: FastMCP) -> AsyncIterator[_AppCtx]:
 
 
 mcp: FastMCP = FastMCP("mlms", lifespan=_lifespan)
+mcp.settings.allowed_hosts = ["*"]
 
 
 _MemType = Literal["fact", "event", "skill", "session_log"]
